@@ -1,24 +1,21 @@
 # https://judge.softuni.bg/Contests/Compete/Index/1831#1
-# 80/100
 
 
 def query_func(n):
     stack = []
-    result = []
-    for i in range(n):
-        command = input().split(" ")
-        if int(command[0]) == 1:
-            stack.append(int(command[1]))
-        elif int(command[0]) == 2:
-            if len(stack) > 0:
-                stack.pop()
-        elif int(command[0]) == 3:
+    for _ in range(n):
+        command_input = input().split(" ")
+        command = int(command_input[0])
+        if command == 1:
+            stack.append(int(command_input[1]))
+        elif command == 2 and stack:  # check if stack is empty before pop()
+            stack.pop()
+        elif command == 3 and stack:  # check if stack is empty before using min()/max()
             print(max(stack))
-        elif int(command[0]) == 4:
+        elif command == 4 and stack:
             print(min(stack))
-    while stack:
-        result.append(str(stack.pop()))
-    return ", ".join(result)
+
+    return ", ".join([str(el) for el in reversed(stack)])
 
 
 num = int(input())

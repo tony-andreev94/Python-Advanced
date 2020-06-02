@@ -1,23 +1,20 @@
 # https://judge.softuni.bg/Contests/Compete/Index/1831#2
-# 80/100
 from collections import deque
 
 
 def check_food(food_quantity):
     orders_left = []
-    queue = deque(input().split(" "))
-    biggest_order = 0
+    queue = deque([int(x) for x in input().split(" ")])
+    biggest_order = max(queue)
+    print(biggest_order)
 
     while queue:
-        order = int(queue.popleft())
-        if order > biggest_order:
-            biggest_order = order
+        order = queue.popleft()
         if order <= food_quantity:
             food_quantity -= order
         else:
             orders_left.append(str(order))
 
-    print(biggest_order)
     if len(orders_left) == 0:
         return "Orders complete"
     else:
