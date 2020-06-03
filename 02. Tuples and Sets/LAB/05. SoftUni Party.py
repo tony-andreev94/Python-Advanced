@@ -20,6 +20,10 @@ def print_missing_guests(guest_set):
     guest_list.sort()
     [print(guest) for guest in guest_list]
 
+    # if it was necessary to first print the ones with letters, and then the ones with digits:
+    # [print(guest) for guest in guest_set if not guest[0].isdigit()]  # first print the ones starting with letter
+    # [print(guest) for guest in guest_set if guest[0].isdigit()]  # then print the ones starting with digit
+
 
 reservations = int(input())
 print_missing_guests(missing_guests(reservations))
